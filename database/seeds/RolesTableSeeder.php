@@ -24,5 +24,12 @@ class RolesTableSeeder extends Seeder
             'display_name' =>'Gms 711 Owner',
             'description' => '',
         ]);
+
+        DB::table('roles')->insert([
+            'id' => 3,
+            'name' => 'employee',
+            'display_name' =>'Gms 711 employee',
+            'description' => '',
+        ]);
     }
 }
