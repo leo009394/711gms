@@ -1,13 +1,13 @@
 
 export default [
     {
-        url: '/',
+        url: '/dashboard/store/list-view',
         name: "List Store",
         slug: "data-list-store-management",
         i18n: "ListStore",
     },
     {
-        url: '/',
+        url: '/dashboard/user/list-view',
         name: "List User",
         slug: "data-list-list-user",
         i18n: "ListUser",

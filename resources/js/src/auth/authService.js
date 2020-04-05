@@ -1,6 +1,6 @@
 import auth0 from 'auth0-js'
 import EventEmitter from 'events'
-import authConfig from '@/../auth_config.json'
+// import authConfig from '@/../auth_config.json'
 
 import store from "@/store/store.js"
 
@@ -10,13 +10,13 @@ const localStorageKey = 'loggedIn';
 const tokenExpiryKey = 'tokenExpiry';
 const loginEvent = 'loginEvent';
 
-const webAuth = new auth0.WebAuth({
-    domain: authConfig.domain,
-    redirectUri: window.location.origin + process.env.BASE_URL + "callback",
-    clientID: authConfig.clientId,
-    responseType: 'id_token',
-    scope: 'openid profile email'
-});
+// const webAuth = new auth0.WebAuth({
+//     domain: authConfig.domain,
+//     redirectUri: window.location.origin + process.env.BASE_URL + "callback",
+//     clientID: authConfig.clientId,
+//     responseType: 'id_token',
+//     scope: 'openid profile email'
+// });
 
 class AuthService extends EventEmitter {
     idToken = null;
@@ -25,23 +25,23 @@ class AuthService extends EventEmitter {
 
     // Starts the user login flow
     login(customState) {
-        webAuth.authorize({
-            appState: customState
-        });
+        // webAuth.authorize({
+        //     appState: customState
+        // });
     }
 
     // Handles the callback request from Auth0
     handleAuthentication() {
         return new Promise((resolve, reject) => {
-            webAuth.parseHash((err, authResult) => {
-                if (err) {
-                    alert(err.error + '. Detailed error can be found in console.');
-                    reject(err);
-                } else {
-                    this.localLogin(authResult);
-                    resolve(authResult.idToken);
-                }
-            });
+            // webAuth.parseHash((err, authResult) => {
+            //     if (err) {
+            //         alert(err.error + '. Detailed error can be found in console.');
+            //         reject(err);
+            //     } else {
+            //         this.localLogin(authResult);
+            //         resolve(authResult.idToken);
+            //     }
+            // });
         });
     }
 
@@ -76,14 +76,14 @@ class AuthService extends EventEmitter {
                 // return reject("Not logged in");
             }
 
-            webAuth.checkSession({}, (err, authResult) => {
-                if (err) {
-                    // reject(err);
-                } else {
-                    this.localLogin(authResult);
-                    resolve(authResult);
-                }
-            });
+            // webAuth.checkSession({}, (err, authResult) => {
+            //     if (err) {
+            //         // reject(err);
+            //     } else {
+            //         this.localLogin(authResult);
+            //         resolve(authResult);
+            //     }
+            // });
         });
     }
 
@@ -96,9 +96,9 @@ class AuthService extends EventEmitter {
         this.tokenExpiry = null;
         this.profile = null;
 
-        webAuth.logout({
-            returnTo: window.location.origin + process.env.BASE_URL
-        });
+        // webAuth.logout({
+        //     returnTo: window.location.origin + process.env.BASE_URL
+        // });
 
         this.emit(loginEvent, { loggedIn: false });
     }

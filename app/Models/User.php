@@ -17,7 +17,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'uuid',
+        'first_name',
+        'local_first_name',
+        'last_name',
+        'local_last_name',
+        'employee_number',
+        'rank',
+        'birthdate',
+        'phone',
+        'email',
+        'email_verified_at',
+        'password',
+        'zip_code',
+        'state',
+        'city',
+        'street',
+        'building',
+        'is_admin',
+        'active',
     ];
 
     /**
@@ -44,5 +62,13 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function stores()
+    {
+        return $this->belongsToMany(Store::class);
     }
 }

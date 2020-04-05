@@ -11,17 +11,17 @@ class StoreUserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('role_user')->insert([
+        DB::table('store_user')->insert([
             'user_id' => 2,
             'store_id' => 1,
         ]);
 
-        DB::table('role_user')->insert([
+        DB::table('store_user')->insert([
             'user_id' => 3,
             'store_id' => 1,
         ]);
 
-        DB::table('role_user')->insert([
+        DB::table('store_user')->insert([
             'user_id' => 2,
             'store_id' => 2,
         ]);

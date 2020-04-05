@@ -20,22 +20,13 @@ export default {
   //       .catch((error) => { reject(error) })
   //   })
   // },
-  createRecord({ commit },  obj) {
-    return new Promise((resolve, reject) => {
-      axios.post(`/v1/api/users`, obj)
-        .then((response) => {
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
-  fetchUsers({commit}, params) {
+  fetchStores({commit}, params) {
     const queryString = Object.keys(params).filter(key => params[key]).map(key => key + '=' + params[key]).join('&');
 
     return new Promise((resolve, reject) => {
-      axios.get("/v1/api/users" + (queryString ? '?' + queryString : ''))
+      axios.get("/v1/api/stores" + (queryString ? '?' + queryString : ''))
         .then((response) => {
-          commit('SET_USERS', response.data.data)
+          commit('SET_STORES', response.data.data)
           resolve(response)
         })
         .catch((error) => {
@@ -45,18 +36,7 @@ export default {
   },
   fetchUser({}, userUuid) {
     return new Promise((resolve, reject) => {
-      axios.get(`/v1/api/users/${userUuid}`)
-        .then((response) => {
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
-  fetchAddressUser({}, zipCode) {
-    return new Promise((resolve, reject) => {
-      zipCode = zipCode || '';
-      axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-      axios.get(`https://api.zipaddress.net/?zipcode=${zipCode}`,  { headers: {} })
+      axios.get(`/v1/api/stores/${userUuid}`)
         .then((response) => {
           resolve(response)
         })
@@ -65,7 +45,7 @@ export default {
   },
   removeRecord({ commit }, userUuid) {
     return new Promise((resolve, reject) => {
-      axios.put(`/v1/api/users/${userUuid}`, {
+      axios.put(`/v1/api/stores/${userUuid}`, {
         active : 0
       })
         .then((response) => {
@@ -75,9 +55,9 @@ export default {
         .catch((error) => { reject(error) })
     })
   },
-  editRecord({ commit }, obj) {
+  editRecord({ commit }, userUuid, obj) {
     return new Promise((resolve, reject) => {
-      axios.put(`/v1/api/users/${obj.uuid}`, obj)
+      axios.put(`/v1/api/stores/${userUuid}`, obj)
         .then((response) => {
           resolve(response)
         })

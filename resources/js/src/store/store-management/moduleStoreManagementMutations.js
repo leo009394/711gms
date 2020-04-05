@@ -9,11 +9,11 @@
 
 
 export default {
-  SET_USERS(state, users) {
-    state.users = users
+  SET_STORES(state, stores) {
+    state.stores = stores
   },
   REMOVE_RECORD(state, itemUuid) {
-    const userIndex = state.users.items.findIndex((u) => u.uuid == itemUuid)
-    state.users.items.splice(userIndex, 1)
+    const storeIndex = state.stores.items.findIndex((u) => u.uuid == itemUuid)
+    state.stores.items.splice(storeIndex, 1)
   },
 }

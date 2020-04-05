@@ -53,7 +53,65 @@ const router = new Router({
                         rule: 'editor',
                         authRequired: true
                     }
-                }
+                },
+                {
+                    path: '/dashboard/user/list-view',
+                    name: 'data-list-list-user',
+                    component: () => import('@/views/apps/user/List.vue'),
+                    meta: {
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: '要員管理', active: true },
+                        ],
+                        pageTitle: '要員管理',
+                        rule: 'editor',
+                        authRequired: true
+                    },
+                },
+                {
+                    path: '/dashboard/user/detail/:uuid',
+                    name: 'data-user',
+                    component: () => import('@/views/apps/user/BaseForm.vue'),
+                    meta: {
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: '要員管理', url: '/dashboard/user/list-view'},
+                            { title: '従業員登録', active: true },
+                        ],
+                        pageTitle: '従業員登録',
+                        rule: 'editor',
+                        authRequired: true
+                    },
+                },
+                {
+                    path: '/dashboard/store/list-view',
+                    name: 'data-list-list-store',
+                    component: () => import('@/views/apps/store/List.vue'),
+                    meta: {
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: '店舗検索', active: true },
+                        ],
+                        pageTitle: '店舗検索',
+                        rule: 'editor',
+                        authRequired: true
+                    },
+                },
+                {
+                    path: '/dashboard/store/detail/:uuid',
+                    name: 'data-store',
+                    component: () => import('@/views/apps/store/BaseForm.vue'),
+                    meta: {
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: '店舗検索', url: '/dashboard/store/list-view'},
+                            { title: '店舗登録', active: true },
+                        ],
+                        pageTitle: '店舗登録',
+                        rule: 'editor',
+                        authRequired: true
+                    },
+                },
             ],
         },
     // =============================================================================

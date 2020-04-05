@@ -15,13 +15,15 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('uuid');
             $table->string('name');
             $table->string('phone');
             $table->string('address');
-            $table->dateTime('closing_date');
-            $table->integer('owner_id');
-            $table->integer('manager_id');
-            $table->integer('in_charger_id');
+            $table->dateTime('closing_date')->nullable();
+            $table->integer('owner_id')->nullable();
+            $table->integer('manager_id')->nullable();
+            $table->integer('in_charger_id')->nullable();
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

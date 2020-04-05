@@ -64,7 +64,7 @@ class AuthController extends Controller
                     break;
                 default:
                     foreach ($role->permissions as $permission) {
-                        $scopeData[] = $permission->slug;
+                        $scopeData[] = $permission->name;
                     }
                     $user->is_admin = false;
                     break;

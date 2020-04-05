@@ -1,8 +1,8 @@
 <template>
-  <div class="the-navbar__user-meta flex items-center" v-if="activeUserInfo.name">
+  <div class="the-navbar__user-meta flex items-center" v-if="activeUserInfo.first_name && activeUserInfo.last_name">
 
     <div class="text-right leading-tight hidden sm:block">
-      <p class="font-semibold">{{ activeUserInfo.name }}</p>
+      <p class="font-semibold">{{ activeUserInfo.first_name + '' + activeUserInfo.last_name }}</p>
       <small>Available</small>
     </div>
 

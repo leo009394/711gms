@@ -15,21 +15,25 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('uuid');
             $table->string('first_name');
-            $table->string('local_first_name');
+            $table->string('local_first_name')->nullable();
             $table->string('last_name');
-            $table->string('last_first_name');
-            $table->string('employee_number');
-            $table->dateTime('birthdate');
-            $table->string('phone');
+            $table->string('local_last_name')->nullable();
+            $table->string('employee_number')->nullable();
+            $table->string('rank')->nullable();
+            $table->dateTime('birthdate')->nullable();
+            $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('zip_code');
-            $table->string('state');
-            $table->string('city');
-            $table->string('street');
-            $table->string('building');
+            $table->string('zip_code')->nullable();;
+            $table->string('state')->nullable();;
+            $table->string('city')->nullable();;
+            $table->string('street')->nullable();;
+            $table->string('building')->nullable();;
+            $table->boolean('is_admin')->default(0);
+            $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
